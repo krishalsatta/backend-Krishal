@@ -4,7 +4,6 @@ const User = require("../model/userModel");
 const { sendEmail } = require("../middleware/sendEmail");
 const cloudinary = require("cloudinary").v2;
 
-// Create a new user
 const createUser = async (req, res) => {
   const { fName, lName, email, phoneNumber, password } = req.body;
 
@@ -24,7 +23,7 @@ const createUser = async (req, res) => {
       });
     }
 
-    const verificationCode = crypto.randomInt(10000, 99999); // 5-digit code
+    const verificationCode = crypto.randomInt(10000, 99999); 
 
     const newUser = new User({
       fName,
