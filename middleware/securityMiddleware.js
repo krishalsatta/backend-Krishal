@@ -19,11 +19,10 @@ securityMiddleware.use(hpp());
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 100, 
 });
 securityMiddleware.use('/api', limiter);
 
-// Data sanitization against NoSQL injection
 securityMiddleware.use(mongoSanitize());
 
 module.exports = securityMiddleware;
