@@ -17,10 +17,9 @@ const authGuard = (req, res, next) => {
     });
   }
 
-  // verify the token
+  
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // attach the user data to the request object
     req.user = decoded;
     next();
   } catch (error) {
