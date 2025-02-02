@@ -7,7 +7,6 @@ const xss = require('xss-clean');
 
 const securityMiddleware = express.Router();
 
-// Set security headers
 securityMiddleware.use(helmet());
 
 // Prevent XSS attacks
