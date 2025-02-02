@@ -55,7 +55,6 @@ router.post("/send-verification-email", async (req, res) => {
   }
 });
 
-// Verify Email
 router.get("/verify-email/:token", async (req, res) => {
   const { token } = req.params;
 
