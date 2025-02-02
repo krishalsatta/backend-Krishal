@@ -3,9 +3,8 @@ const userController = require("../controller/userController");
 const authGuard = require("../middleware/auth");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
-const User = require("../model/userModel"); // Adjust the path to your User model
+const User = require("../model/userModel"); 
 
-// User routes
 router.post("/create", userController.createUser);
 router.post("/login", userController.loginUser);
 router.post("/forgot/password", userController.forgotPassword);
@@ -45,7 +44,7 @@ router.post("/send-verification-email", async (req, res) => {
     });
 
     const mailOptions = {
-      from: "sijankasalawat3339@gmail.com",
+      from: "sattakrishal97@gmail.com",
       to: user.email,
       subject: "Email Verification",
       text: `Please verify your email by clicking on the following link: ${verificationUrl}`,
@@ -63,15 +62,15 @@ router.post("/send-verification-email", async (req, res) => {
 router.get("/verify-email/:token", async (req, res) => {
   const { token } = req.params;
 
-  console.log("Received token:", token); // Log the received token
+  console.log("Received token:", token); 
 
   try {
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
-    console.log("Hashed token:", hashedToken); // Log the hashed token
+    console.log("Hashed token:", hashedToken); 
 
     const user = await User.findOne({
       verificationToken: hashedToken,
-      verificationTokenExpire: { $gt: Date.now() }, // Check if token is still valid
+      verificationTokenExpire: { $gt: Date.now() }, 
     });
 
     if (!user) {
