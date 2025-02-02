@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
       lName,
       email,
       phoneNumber,
-      password, // Password stored as plain text
+      password, 
       verificationCode,
       isVerified: false,
     });
@@ -76,7 +76,7 @@ const verifyEmail = async (req, res) => {
     }
 
     user.isVerified = true;
-    user.verificationCode = undefined; // Clear the code
+    user.verificationCode = undefined; 
     await user.save();
 
     res.status(200).json({
