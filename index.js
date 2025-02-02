@@ -12,13 +12,10 @@ const { errorHandler } = require("./middleware/errorMiddleware.js");
 const https = require("https");
 const fs = require("fs");
 
-// Creating an express app
 const app = express();
 
-// Configuring dotenv to use the .env file
 dotenv.config();
 
-// Connecting to the database
 connectToDB();
 
 // Cloudinary configuration
