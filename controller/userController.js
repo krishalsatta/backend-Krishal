@@ -238,7 +238,7 @@ const resetPassword = async (req, res) => {
       });
     }
 
-    user.password = req.body.password; // No hashing
+    user.password = req.body.password; 
 
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
