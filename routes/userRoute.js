@@ -12,7 +12,6 @@ router.put("/password/reset/:token", userController.resetPassword);
 router.get("/getUsers/:id?", authGuard, userController.getUsers);
 router.patch("/updateUser/:id?", authGuard, userController.updateUserProfile);
 
-// Send Verification Email
 router.post("/send-verification-email", async (req, res) => {
   const { email } = req.body;
 
@@ -23,7 +22,6 @@ router.post("/send-verification-email", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Generate verification token
     const verificationToken = crypto.randomBytes(20).toString("hex");
     user.verificationToken = crypto
       .createHash("sha256")
@@ -32,7 +30,6 @@ router.post("/send-verification-email", async (req, res) => {
     user.verificationTokenExpire = Date.now() + 10 * 60 * 1000; // 10 minutes
     await user.save();
 
-    // Send verification email
     const verificationUrl = `http://localhost:3000/verify/${verificationToken}`;
 
     const transporter = nodemailer.createTransport({
