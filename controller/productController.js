@@ -29,7 +29,7 @@ const createProduct = async (req, res) => {
     }
 
     // Assuming you have the user's ID from the authentication token
-    const userId = req.user.id; // You need to extract the user ID from the authentication token
+    const userId = req.user.id; 
 
     // Check if the user exists
     const user = await User.findById(userId);
